@@ -3,6 +3,7 @@ const asyncWrapper = require("../middleware/async-wrapper");
 
 
 const articleSchema = new mongoose.Schema({
+  author: String,
   title: String,
   content: String
 });
@@ -15,10 +16,12 @@ const getAllArticles = asyncWrapper(async (req, res) => {
 });
 
 const postAnArticle = asyncWrapper(async (req, res) => {
+  const newAuthor = req.body.author;
   const newTitle = req.body.title;
   const newContent = req.body.content;
 
   const newArticle = new Article({
+    author: newAuthor,
     title: newTitle,
     content: newContent
   });
@@ -44,7 +47,7 @@ const getOneArticle = asyncWrapper(async (req, res) => {
 
 const replaceOneArticle = asyncWrapper(async (req, res) => {
   const relatedTitle = req.params.title;
-  await Article.replaceOne({title: relatedTitle}, {title: req.body.title, content: req.body.content});
+  await Article.replaceOne({title: relatedTitle}, {author: req.body.author, title: req.body.title, content: req.body.content});
   res.send("The article is successfully replaced.");
 });
 
