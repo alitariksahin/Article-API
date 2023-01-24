@@ -1,18 +1,19 @@
 {
-  "name": "wiki-api",
+  "name": "articles-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "A composition of client and server side on articles",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Ali Tarik Sahin",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.1",
     "dotenv": "^16.0.3",
     "ejs": "^3.1.8",
     "express": "^4.18.2",
-    "mongoose": "^6.8.4"
+    "mongoose": "^6.8.4",
+    "node-fetch": "^3.3.0"
   }
 }

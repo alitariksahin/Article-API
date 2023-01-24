@@ -16,9 +16,9 @@ const {
 router.get("/", getAllArticles);
 router.post("/", postAnArticle);
 router.delete("/", deleteAllArticles);
-router.get("/:title", getOneArticle);
-router.put("/:title", replaceOneArticle);
-router.patch("/:title", updateOneArticle);
-router.delete("/:title", deleteOneArticle);
+router.get("/:id", getOneArticle);
+router.put("/:id", replaceOneArticle);
+router.patch("/:id", updateOneArticle);
+router.delete("/:id", deleteOneArticle);
 
 module.exports = router;

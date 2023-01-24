@@ -3,6 +3,7 @@ const asyncWrapper = require("../middleware/async-wrapper");
 
 
 const articleSchema = new mongoose.Schema({
+  author: String,
   title: String,
   content: String
 });
@@ -15,15 +16,17 @@ const getAllArticles = asyncWrapper(async (req, res) => {
 });
 
 const postAnArticle = asyncWrapper(async (req, res) => {
+  const newAuthor = req.body.author;
   const newTitle = req.body.title;
   const newContent = req.body.content;
 
   const newArticle = new Article({
+    author: newAuthor,
     title: newTitle,
     content: newContent
   });
   await newArticle.save();
-  res.send("The new article is successfully saved.");
+  res.send("The article is posted successfully");
 });
 
 const deleteAllArticles = asyncWrapper(async (req, res) => {
@@ -32,8 +35,8 @@ const deleteAllArticles = asyncWrapper(async (req, res) => {
 });
 
 const getOneArticle = asyncWrapper(async (req, res) => {
-  const relatedTitle = req.params.title;
-  const result = await Article.findOne({title: relatedTitle});
+  const relatedID = req.params.id;
+  const result = await Article.findOne({_id: relatedID});
   if (result) {
     res.send(result);
   }
@@ -43,8 +46,8 @@ const getOneArticle = asyncWrapper(async (req, res) => {
 })
 
 const replaceOneArticle = asyncWrapper(async (req, res) => {
-  const relatedTitle = req.params.title;
-  await Article.replaceOne({title: relatedTitle}, {title: req.body.title, content: req.body.content});
+  const relatedID = req.params.id;
+  await Article.replaceOne({_id: relatedID}, {author: req.body.author, title: req.body.title, content: req.body.content});
   res.send("The article is successfully replaced.");
 });
 
@@ -57,8 +60,8 @@ const updateOneArticle = asyncWrapper(async (req, res) => {
 });
 
 const deleteOneArticle = asyncWrapper(async (req, res) => {
-  const relatedTitle = req.params.title;
-  const result = await Article.findOneAndDelete({title: relatedTitle});
+  const relatedID = req.params.id;
+  const result = await Article.findOneAndDelete({_id: relatedID});
   if (result) {
     res.send("The article has been deleted successfully.");
   }

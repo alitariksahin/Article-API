@@ -1,0 +1,36 @@
+<%- include("partials/header"); -%>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 mx-auto mt-4">
+      <div class="card shadow">
+        <div class="card-header bg-dark">
+          <h4 class="text-light">Edit Article (<%= article.title %>)</h4>
+        </div>
+        <div class="card-body p-4">
+          <form id="add-form" action="/edit/<%= article._id %>" method="post">
+            <div class="mb-2">
+              <label for="author"><h5>Author</h5></label>
+              <input type="text" name="author" class="form-control form-control-lg" value="<%= article.author %>" placeholder="Enter author's name" required>
+            </div>
+            <div class="mb-2">
+              <label for="title"><h5>Title</h5></label>
+              <input type="text" name="title" class="form-control form-control-lg" value="<%= article.title %>" placeholder="Enter article's title" required>
+            </div>
+            <div class="mb-2">
+              <label for="article"><h5>Article</h5></label>
+              <textarea type="text" name="content" class= "form-control form-control-lg" rows="8" cols="80" required><%= article.content %></textarea>
+            </div>
+            <div class="mb-2" align = "right">
+
+              <input type="submit" name="submit" class="btn btn-dark" value="Update Article">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<%- include("partials/footer"); -%>
