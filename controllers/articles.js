@@ -26,7 +26,7 @@ const postAnArticle = asyncWrapper(async (req, res) => {
     content: newContent
   });
   await newArticle.save();
-  res.send("The new article is successfully saved.");
+  res.send(newArticle);
 });
 
 const deleteAllArticles = asyncWrapper(async (req, res) => {
