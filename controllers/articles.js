@@ -52,9 +52,9 @@ const replaceOneArticle = asyncWrapper(async (req, res) => {
 });
 
 const updateOneArticle = asyncWrapper(async (req, res) => {
-  const relatedTitle = req.params.title;
+  const relatedID = req.params.id;
 
-  await Article.updateOne({title: relatedTitle}, {$set: req.body});
+  await Article.updateOne({_id: relatedID}, {$set: req.body});
   res.send("The article is successfully updated.");
 
 });
