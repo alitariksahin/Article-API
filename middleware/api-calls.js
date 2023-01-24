@@ -1,9 +1,9 @@
+const axios = require('axios');
 
 const getAll = async (req, res, next) => {
   try{
-    const res = await fetch("https://article-api-ats.onrender.com/articles");
-    const json = await res.json();
-    req.articles = json;
+    const res = await axios.get("https://article-api-ats.onrender.com/articles");
+    req.articles = res.data;
     next();
   }catch(err) {
     console.log(err);
@@ -12,12 +12,10 @@ const getAll = async (req, res, next) => {
 
 const postOne = async (req, res, next) => {
   try{
-    const res = await fetch("https://article-api-ats.onrender.com/articles", {
-      method: "POST",
-      headers: {
-      'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(req.body)
+    const res = await axios.post("https://article-api-ats.onrender.com/articles", {
+    author: req.body.author,
+    title: req.body.title,
+    content: req.body.content
     });
     next();
   }catch(err) {
@@ -27,9 +25,8 @@ const postOne = async (req, res, next) => {
 
 const getOne = async (req, res, next) => {
 try{
-  const res = await fetch("https://article-api-ats.onrender.com/articles/" + String(req.params.id));
-  const json = await res.json();
-  req.article = json;
+  const res = await axios.get("https://article-api-ats.onrender.com/articles/" + String(req.params.id));
+  req.article = res.data;
   next();
 }catch(err) {
   console.log(err);
@@ -39,12 +36,10 @@ try{
 
 const updateOne = async (req, res, next) => {
   try {
-    const res = await fetch("https://article-api-ats.onrender.com/articles/" + String(req.params.id), {
-      method: "PATCH",
-      headers: {
-      'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(req.body)
+    const res = await axios.patch("https://article-api-ats.onrender.com/articles/" + String(req.params.id), {
+      author: req.body.author,
+      title: req.body.title,
+      content: req.body.content
     });
     next();
   } catch(err) {
@@ -54,9 +49,7 @@ const updateOne = async (req, res, next) => {
 
 const removeOne = async (req, res, next) => {
   try {
-    const res = await fetch("https://article-api-ats.onrender.com/articles/" + String(req.params.id), {
-      method: "DELETE",
-    });
+    const res = await axios.delete("https://article-api-ats.onrender.com/articles/" + String(req.params.id));
     next();
   } catch(err) {
     console.log(err);
