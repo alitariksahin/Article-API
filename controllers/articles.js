@@ -35,8 +35,8 @@ const deleteAllArticles = asyncWrapper(async (req, res) => {
 });
 
 const getOneArticle = asyncWrapper(async (req, res) => {
-  const relatedTitle = req.params.title;
-  const result = await Article.findOne({title: relatedTitle});
+  const relatedID = req.params.id;
+  const result = await Article.findOne({_id: relatedID});
   if (result) {
     res.send(result);
   }
@@ -46,22 +46,22 @@ const getOneArticle = asyncWrapper(async (req, res) => {
 })
 
 const replaceOneArticle = asyncWrapper(async (req, res) => {
-  const relatedTitle = req.params.title;
-  await Article.replaceOne({title: relatedTitle}, {author: req.body.author, title: req.body.title, content: req.body.content});
+  const relatedID = req.params.id;
+  await Article.replaceOne({_id: relatedID}, {author: req.body.author, title: req.body.title, content: req.body.content});
   res.send("The article is successfully replaced.");
 });
 
 const updateOneArticle = asyncWrapper(async (req, res) => {
-  const relatedTitle = req.params.title;
+  const relatedID = req.params.id;
 
-  await Article.updateOne({title: relatedTitle}, {$set: req.body});
+  await Article.updateOne({_id: relatedID}, {$set: req.body});
   res.send("The article is successfully updated.");
 
 });
 
 const deleteOneArticle = asyncWrapper(async (req, res) => {
-  const relatedTitle = req.params.title;
-  const result = await Article.findOneAndDelete({title: relatedTitle});
+  const relatedID = req.params.id;
+  const result = await Article.findOneAndDelete({_id: relatedID});
   if (result) {
     res.send("The article has been deleted successfully.");
   }
