@@ -6,7 +6,7 @@ Here is the link: https://article-api-ats.onrender.com
 <h2>Technologies used in this project</h2>
 
 Server side is built on <strong>Node.js/Express</strong> and powered with <strong>mongoDB</strong> <br>
-Client side is made with <strong>Node.js/ejs</strong>
+Client side is made with <strong>Node.js/EJS</strong>
 
 <h2>Functionality of the project</h2>
 <ul>
