@@ -9,8 +9,10 @@ require("dotenv").config();
 
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
+
 app.use(express.json());
 app.set("view engine", "ejs");
+
 
 app.use("/articles", articles_server_side);
 app.use("/", articles_client_side);
