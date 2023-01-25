@@ -1,7 +1,7 @@
 # Article-API
 
 This project aims to create an interactive database for various articles.<br> 
-Here is the link: https://article-api-ats.onrender.com (initially it may take up to 30 second to render the site since it is deployed on a free service)
+Here is the link: https://article-api-ats.onrender.com (initially it may take up to 30 seconds to render the site since it is deployed on a free service)
 
 <h2>Technologies used in this project</h2>
 
