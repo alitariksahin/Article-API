@@ -22,6 +22,14 @@ router.post("/add", postOne, (req, res) => {
   res.redirect("/");
 });
 
+router.get("/about", (req, res) => {
+  res.render("about", {title: "About"});
+});
+
+router.get("/contact", (req, res) => {
+  res.render("contact", {title: "Contact"});
+});
+
 router.get("/edit/:id", getOne, (req, res) => {
   res.render("edit_articles", {title: "Edit Article", article: req.article});
 });
